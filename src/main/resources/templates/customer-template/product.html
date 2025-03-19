@@ -14,7 +14,7 @@
 
             <a class="navbar-brand"
 
-               th:href="@{/beestore/trang-chu}">BeeStore<span></span></a></a>
+               th:href="@{/beestore/trang-chu}">SunFlower<span></span></a></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
                 aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
@@ -336,7 +336,7 @@
                         <div class="product-item" style="border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px">
 <!--                            <a th:href="@{'/beestore/detaisp/' + ${ctsp.id}}" style="text-decoration: none">-->
                             <a th:href="@{'/beestore/detaisp/' + ${ctsp.idSanPham}}" style="text-decoration: none">
-                                <img th:src="@{'../images/' + ${ctsp.anhChinh}}" class="img-fluid product-thumbnail"
+                                <img th:src="@{${ctsp.anhChinh}}" class="img-fluid product-thumbnail"
                                      style="border-radius: 8px; width: 100%; height: auto;" alt="Product Image">
                                 <h3 class="product-title" style="font-size: 18px; margin-top: 15px; color: #333;"
                                     th:text="${ctsp.tenSanPham +' ['+ ctsp.tenDongSanPham +'- '+ ctsp.tenDeGiay +']'}"></h3>
@@ -454,7 +454,7 @@
 
             <div class="row g-5 mb-5" style="color: black" >
                 <div class="col-lg-4">
-                    <div style="color: black"  class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo" style="color: black" >BeeStore<span></span></a></div>
+                    <div style="color: black"  class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo" style="color: black" >Sunflower<span></span></a></div>
                     <p style="color: black" class="mb-4"> Hệ thống giày thể thao số 1 Hà Nội</p>
 
 
@@ -489,7 +489,7 @@
                         </div>
 
                         <div class="col-6 col-sm-6 col-md-3">
-                            <ul class="list-unstyled">
+                            <ul class="list-unstyled">  
                                 <li><a href="#">Chăm sóc khách hàng</a></li>
                                 <li><a href="#">Chính sách bảo hành</a></li>
                                 <li><a href="#">Hoàn tiền</a></li>
@@ -505,7 +505,7 @@
                     <div class="col-lg-6">
                         <p class="mb-2 text-center text-lg-start">Chủ sở hữu &copy;
                             <script>document.write(new Date().getFullYear());</script> &mdash;
-                            BEESTORE_SD01_SUM24
+                            
 
                             <!-- License information: https://untree.co/license/ -->
                         </p>

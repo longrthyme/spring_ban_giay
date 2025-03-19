@@ -1,5 +1,6 @@
 package com.example.datnsum24sd01.controller;
 
+import com.cloudinary.Cloudinary;
 import com.example.datnsum24sd01.entity.AnhBia;
 import com.example.datnsum24sd01.entity.SanPham;
 import com.example.datnsum24sd01.entity.ThuongHieu;
@@ -11,6 +12,7 @@ import com.example.datnsum24sd01.service.DongSanPhamService;
 import com.example.datnsum24sd01.service.NhaCungCapServiec;
 import com.example.datnsum24sd01.service.SanPhamService;
 import com.example.datnsum24sd01.service.ThuongHieuSerivice;
+import com.example.datnsum24sd01.service.impl.CloudinaryService;
 import com.example.datnsum24sd01.worker.Spingsecurity;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +44,7 @@ public class SanPhamController {
     private final DongSanPhamService dongSanPhamService;
     private final AnhBiaSeriviec anhSanPhamService;
     private final SanPhamService sanPhamService;
+    private final CloudinaryService cloudinaryService;
     Integer pageNo = 0;
 
     List<TrangThai> list = new ArrayList<>(Arrays.asList(TrangThai.DANG_HOAT_DONG, TrangThai.DUNG_HOAT_DONG));
@@ -146,21 +149,23 @@ public class SanPhamController {
         if (multipartFiles.length > 0) {
             // Lấy ảnh đầu tiên từ danh sách
             MultipartFile firstImage = multipartFiles[0];
-            String fileName = StringUtils.cleanPath(firstImage.getOriginalFilename());
-            sanPham.setAnhChinh(fileName);
+//            String fileName = StringUtils.cleanPath(firstImage.getOriginalFilename());
+            String firstImgUrl = cloudinaryService.uploadFile(firstImage);
+            sanPham.setAnhChinh(firstImgUrl);
 
             // Xử lý lưu sản phẩm
             SanPham savedSanPham = sanPhamService.save(sanPham);
 
             for (MultipartFile multipartFile : multipartFiles) {
-                fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+                String urlImg= cloudinaryService.uploadFile(multipartFile);
+//                fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
                 AnhBia anhSanPham = new AnhBia();
                 anhSanPham.setSanPham(savedSanPham);
-                anhSanPham.setUrl(fileName);
+                anhSanPham.setUrl(urlImg);
                 anhSanPhamService.save(anhSanPham);
 
-                String uploadDir = "src/main/resources/static/images/";
-                FileUpload.saveFile(uploadDir, fileName, multipartFile);
+//                String uploadDir = "src/main/resources/static/images/";
+//                FileUpload.saveFile(uploadDir, fileName, multipartFile);
             }
         } else {
             ra.addFlashAttribute("chuadoianh", "Hãy chọn ít nhất một ảnh");
@@ -225,13 +230,14 @@ public class SanPhamController {
 
                 for (MultipartFile multipartFile : multipartFiles) {
                     if (!multipartFile.isEmpty()) {
-                        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//                        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+                        String fileName = cloudinaryService.uploadFile(multipartFile);
                         AnhBia anhSanPham = new AnhBia();
                         anhSanPham.setSanPham(existingSanPham);
                         existingSanPham.setAnhChinh(fileName);
                         anhSanPham.setUrl(fileName);
                         anhSanPhamService.save(anhSanPham);
-                        FileUpload.saveFile(uploadDir, fileName, multipartFile);
+//                        FileUpload.saveFile(uploadDir, fileName, multipartFile);
                         newImages.add(anhSanPham);
                         newImageUrls.add(anhSanPham.getUrl());
                         String firstImageUrl = newImageUrls.get(0);

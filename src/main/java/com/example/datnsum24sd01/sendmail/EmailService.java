@@ -40,7 +40,7 @@ public class EmailService {
                 "Bạn vừa dùng mail này để đăng kí tài khoản BeeStore,\n\n" +
                 "Tài khoản mới với tên đăng nhập : "+ email+" ,\n\n" +
                 "Mật Khẩu đăng nhập : " + matKhau + " ,\n\n" +
-                "Một lần nữa chúc mừng bạn là thành viên của BeeStore : http://localhost:8080/beestore/trang-chu  ,\n\n" +
+                "Một lần nữa chúc mừng bạn là thành viên của SunFlower: http://localhost:8080/beestore/trang-chu  ,\n\n" +
                 " * Quý khách vui lòng không trả lời email này * ,\n\n" +
                 "Trân trọng,\n[BEESTORE]");
 
@@ -203,7 +203,7 @@ public class EmailService {
         message.setText("Chào "+ recipientEmail + " ,\n\n" +
                 "Bạn vừa dùng mail này để xác nhận quên mật khẩu tài khoản BeeStore,\n\n" +
                 "Mật Khẩu đăng nhập mới của bạn là : " + newPassword + " ,\n\n" +
-                "Nếu bạn không xác nhận quên mật khẩu mà vẫn nhận được mail này thì hãy liên hệ lại với BeeStore ngay lập tức qua hotline :0398194211   ,\n\n" +
+                "Nếu bạn không xác nhận quên mật khẩu mà vẫn nhận được mail này thì hãy liên hệ lại với SunFlowerngay lập tức qua hotline :0398194211   ,\n\n" +
                 "Trân trọng,\n[BEESTORE]");
 
         javaMailSender.send(message);

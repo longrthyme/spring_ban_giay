@@ -146,7 +146,7 @@
             <img style="height: 50px; width: 50px;"
                  th:src="@{/img/e77e3572384e5c9af495d1acfbfa6f70.jpg}">
             <a class="navbar-brand"
-               th:href="@{/beestore/trang-chu}">BeeStore</a></a>
+               th:href="@{/beestore/trang-chu}">Sunflower</a></a>
 
         <button aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
                 data-bs-target="#navbarsFurni" data-bs-toggle="collapse" type="button">
@@ -273,14 +273,14 @@
                 <div class="col-lg-6">
                     <div class="product-image">
                         <div class="product-image-main">
-                            <img th:src="@{'/../images/' + *{sanPham.anhChinh}}"
+                            <img th:src="@{ *{sanPham.anhChinh}}"
                                  alt="Main Product Image" id="product-main-image"/>
                         </div>
                         <div class="product-image-slider">
-                            <img th:src="@{'/../images/' + *{sanPham.anhChinh}}"
+                            <img th:src="@{*{sanPham.anhChinh}}"
                                  alt="Main Product Image Thumbnail" class="image-list"/>
                             <div style="margin-left: 5px" th:each="listAnh : ${listAnhDetail}">
-                                <img th:src="@{'/../images/' + ${listAnh.getUrl()}}"
+                                <img th:src="@{${listAnh.getUrl()}}"
                                      alt="Product Image Thumbnail" class="image-list"/>
                             </div>
                         </div>
@@ -681,7 +681,7 @@
             <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" th:each="ctsp4rand : ${listRandom}">
                 <div class="product-item" style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; transition: box-shadow 0.3s;">
                     <a th:href="@{'/beestore/detaisp/' + ${ctsp4rand.getId()}}" style="text-decoration: none; color: inherit;">
-                        <img th:src="@{'/../images/' + ${ctsp4rand.getAnh_chinh()}}" class="img-fluid product-thumbnail" style="border-radius: 10px;">
+                        <img th:src="@{${ctsp4rand.getAnh_chinh()}}" class="img-fluid product-thumbnail" style="border-radius: 10px;">
                         <h3 class="product-title" th:text="${ctsp4rand.getTenSp() +' '+ ctsp4rand.getTenDongSp() +' '+ ctsp4rand.getTenDe_giay() }" style="font-size: 16px; margin-top: 10px; font-family: 'Montserrat', sans-serif;"></h3>
                         <strong th:if="${ctsp4rand.getGia_mac_dinh() != ctsp4rand.getGia_ban()}" class="product-price"
                                 th:text="${#numbers.formatDecimal(ctsp4rand.getGia_ban(), 0, 'POINT', 0, 'COMMA') + ' VND'}" style="color: red; font-size: 14px;"></strong>

@@ -100,7 +100,7 @@
     <link href="/../css/customer/tiny-slider.css" rel="stylesheet"/>
     <link href="/../css/customer/style.css" rel="stylesheet"/>
     <title>
-        BeeStore
+        Sunflower
     </title>
     <link href="/../css/customer/tiny-slider.css" rel="stylesheet"/>
     <link href="/../css/customer/style.css" rel="stylesheet"/>
@@ -123,7 +123,7 @@
             <img style="height: 50px; width: 50px;"
                  th:src="@{/img/e77e3572384e5c9af495d1acfbfa6f70.jpg}">
             <a class="navbar-brand"
-               th:href="@{/beestore/trang-chu}">BeeStore</a></a>
+               th:href="@{/beestore/trang-chu}">Sunflower</a></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
                 aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
@@ -334,7 +334,7 @@
                                     <tbody th:each="gioHangChiTiet : ${gioHangChiTiets}">
                                     <tr>
                                         <td>
-                                            <img th:src="@{'/../images/' + ${gioHangChiTiet.chiTietSanPham.sanPham.anhChinh}}"
+                                            <img th:src="@{${gioHangChiTiet.chiTietSanPham.sanPham.anhChinh}}"
                                                  style="width: 100px"
                                                  alt="Image"
                                                  class="img-fluid"
